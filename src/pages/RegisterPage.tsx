@@ -4,22 +4,23 @@ import { Link } from "react-router-dom";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
-import type { LoginForm } from "../types/login.type";
+import type { RegisterForm } from "../types/register.type";
 
 const features = [
-  "Onlayn platforma — istalgan vaqtda darslar",
-  "Mentor bilan to'g'ridan-to'g'ri aloqa",
-  "Davlat tomonidan tan olingan sertifikat",
+  "Birinchi darslar bepul",
+  "35+ ta yo'nalish — o'zingiznikini tanlang",
+  "Ish ta'minoti — 100+ hamkor kompaniya",
 ];
 
-const LoginPage = () => {
-  const form = useForm<LoginForm>();
+const RegisterPage = () => {
+  const form = useForm<RegisterForm>();
   const [showPassword, setShowPassword] = useState("password");
+  const [showConfirm, setShowConfirm] = useState("password");
   const {
     formState: { errors },
   } = form;
 
-  const onSubmit = (data: LoginForm) => {
+  const onSubmit = (data: RegisterForm) => {
     console.log(data);
   };
 
@@ -36,8 +37,7 @@ const LoginPage = () => {
 
         <div className="max-w-md">
           <h1 className="text-4xl font-bold leading-tight">
-            Bilim — kelajakka eng <br />
-            yaxshi sarmoyadir.
+            Bizning oilamizga qo'shiling.
           </h1>
           <p className="mt-5 text-base leading-relaxed text-blue-100">
             5000+ bitiruvchi bizning oilamiz tarkibida. Endi navbat <br />
@@ -76,24 +76,74 @@ const LoginPage = () => {
         </div>
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-6">
           <h2 className="text-3xl font-bold text-slate-900">
-            Hisobingizga kiring
+            Yangi hisob yarating
           </h2>
           <p className="mt-2 text-sm text-slate-500">
-            Ma'lumotlaringizni kiriting va o'quv jarayonini davom ettiring.
+            Ma'lumotlaringizni kiriting va bepul ro'yxatdan o'ting.
           </p>
 
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="mt-1 flex flex-col gap-y-4"
+            className="mt-7 flex flex-col gap-y-4"
             noValidate
           >
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2"></div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Input
+                name="firstname"
+                placeholder="Aziz"
+                form={form}
+                type="text"
+                label="Ism"
+                required
+                error={errors.firstname?.message}
+                rules={{
+                  required: "Ism kiritilishi shart",
+                  minLength: {
+                    value: 3,
+                    message: "Ism kamida 2 ta harfdan iborat bo'lishi kerak",
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: "Ism 30 ta harfdan oshmasligi kerak",
+                  },
+                  pattern: {
+                    value: /^[A-Za-zÀ-ÿʼ'\s]+$/,
+                    message: "Ism faqat harflardan iborat bo'lishi kerak",
+                  },
+                }}
+              />
+              <Input
+                name="lastname"
+                type="text"
+                form={form}
+                placeholder="Karimov"
+                label="Familiya"
+                required
+                error={errors.lastname?.message}
+                rules={{
+                  required: "Familiya kiritilishi shart",
+                  minLength: {
+                    value: 3,
+                    message:
+                      "Familiya kamida 3 ta harfdan iborat bo'lishi kerak",
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: "Familiya 30 ta harfdan oshmasligi kerak",
+                  },
+                  pattern: {
+                    value: /^[A-Za-zÀ-ÿʼ'\s]+$/,
+                    message: "Familiya faqat harflardan iborat bo'lishi kerak",
+                  },
+                }}
+              />
+            </div>
             <Input
               name="email"
               type="email"
               form={form}
               placeholder="aziz@example.com"
-              label="Email yoki telefon raqam"
+              label="Email"
               required
               leftIcon={<Icon.mail />}
               error={errors.email?.message}
@@ -102,6 +152,23 @@ const LoginPage = () => {
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                   message: "Email manzil noto'g'ri kiritilgan",
+                },
+              }}
+            />
+            <Input
+              name="phone"
+              type="tel"
+              form={form}
+              placeholder="+998 90 123 45 67"
+              label="Telefon raqam"
+              required
+              leftIcon={<Icon.phone />}
+              error={errors.phone?.message}
+              rules={{
+                required: "Telefon raqam kiritilishi shart",
+                pattern: {
+                  value: /^\+?998\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$/,
+                  message: "Telefon raqam +998 XX XXX XX XX formatida bo'lsin",
                 },
               }}
             />
@@ -143,22 +210,56 @@ const LoginPage = () => {
                 </button>
               }
             />
-            <label className="flex justify-between items-center mb-3 select-none">
-              <label className="flex items-center gap-x-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4 rounded border-gray-300 text-[#2563EB] focus:ring-[#2563EB]"
-                />
-                <span className="text-[14px] text-black font-normal">
-                  Meni eslab qol
-                </span>
-              </label>
-              <a
-                className="text-[14px] text-[#2563EB] font-normal hover:underline"
-                href="#"
-              >
-                Parolni unutdingizmi?
-              </a>
+            <Input
+              name="confirmPassword"
+              type={showConfirm}
+              form={form}
+              placeholder="Kamida 8 ta belgi"
+              label="Paroldi tasdiqlang"
+              required
+              error={errors.confirmPassword?.message}
+              rules={{
+                required: "Parolni tasdiqlang",
+                validate: (value) =>
+                  value === form.watch("password") || "Parollar mos kelmadi",
+              }}
+              leftIcon={<Icon.passwordIcon />}
+              rightIcon={
+                <button
+                  type="button"
+                  className="cursor-pointer"
+                  onClick={() =>
+                    setShowConfirm(
+                      showConfirm === "password" ? "text" : "password",
+                    )
+                  }
+                >
+                  {showConfirm === "password" ? <Icon.eye /> : <Icon.eyeOff />}
+                </button>
+              }
+            />
+            <label className="flex items-start gap-x-2.5 text-sm text-slate-600">
+              <input
+                type="checkbox"
+                className="mt-0.5 h-4 w-4 cursor-pointer rounded border-slate-300 text-blue-600 focus:ring-blue-200"
+                {...form.register("terms", { required: true })}
+              />
+              <span>
+                <a
+                  href="#"
+                  className="font-medium text-blue-600 hover:underline"
+                >
+                  Foydalanish shartlari
+                </a>{" "}
+                va{" "}
+                <a
+                  href="#"
+                  className="font-medium text-blue-600 hover:underline"
+                >
+                  Maxfiylik siyosati
+                </a>
+                ga roziman
+              </span>
             </label>
 
             <Button
@@ -193,10 +294,10 @@ const LoginPage = () => {
           <p className="mt-6 text-center text-sm text-slate-500">
             Hisobingiz bormi?{" "}
             <Link
-              to="/register"
+              to="/login"
               className="font-semibold text-blue-600 hover:underline"
             >
-              Ro'yxatdan o'ting
+              Kirish
             </Link>
           </p>
         </div>
@@ -205,4 +306,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
