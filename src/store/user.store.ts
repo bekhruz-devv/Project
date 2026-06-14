@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import type { IUserStore } from "../types/user.store.type";
-
 const useUserStore = create<IUserStore>((set) => {
   return {
     user: null,
