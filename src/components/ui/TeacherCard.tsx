@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
 import type { Teacher } from "../../types/home.type";
 
 const TeacherCard = ({ teacher }: { teacher: Teacher }) => {
-  return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
+  const isDetailAvailable = teacher.name === "Akmal Karimov";
+
+  const content = (
+    <>
       <img
         src={teacher.photo}
         alt={teacher.name}
@@ -27,6 +30,23 @@ const TeacherCard = ({ teacher }: { teacher: Teacher }) => {
           <p className="text-xs text-gray-400">Reyting</p>
         </div>
       </div>
+    </>
+  );
+
+  if (isDetailAvailable) {
+    return (
+      <Link
+        to="/teachers/akmal-karimov"
+        className="block rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md"
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
+      {content}
     </div>
   );
 };

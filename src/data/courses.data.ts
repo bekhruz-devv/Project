@@ -1,5 +1,3 @@
-// src/data/courses.data.ts
-
 export interface Course {
   id: string;
   title: string;
@@ -19,23 +17,6 @@ export interface Course {
   price: number;
   oldPrice?: number;
   image: string;
-  reviewsCount: number;
-  studentsCount: number;
-  language: string;
-  instructor: {
-    name: string;
-    title: string;
-    avatar: string;
-  };
-  aboutText: string[];
-  whatYouLearn: string[];
-  whoIsItFor: string[];
-  requiredSkills: string[];
-  format: string;
-  startDate: string;
-  access: string;
-  hasCertificate: boolean;
-  features: string[];
 }
 
 export const categories: { label: Course["category"]; count: number }[] = [
@@ -68,46 +49,6 @@ export const courses: Course[] = [
     price: 490000,
     oldPrice: 690000,
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600",
-    reviewsCount: 312,
-    studentsCount: 540,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Akmal Karimov",
-      title: "JavaScript Lead",
-      avatar: "https://i.pravatar.cc/100?img=12",
-    },
-    aboutText: [
-      "JavaScript — zamonaviy web ilovalarining asosi. Bu kurs sizga hech qanday oldindan tajriba kerak emas — biz noldan boshlab to'liq fullstack JavaScript dasturchisigacha ko'taramiz.",
-      "Har bir mavzu nazariy darsdan keyin amaliy mashqlar bilan mustahkamlanadi. Kurs davomida 5 ta real biznes loyihasi ustida ishlaysiz — bular sizning portfolioda bo'ladi.",
-    ],
-    whatYouLearn: [
-      "JavaScript asoslari va sintaksisi",
-      "DOM va sahifa bilan ishlash",
-      "Fetch API va REST",
-      "OOP printsiplari",
-      "ES6+: arrow, destructuring, spread",
-      "Asinxronlik va Promise",
-      "Git va GitHub bilan ishlash",
-      "Test yozish (Jest)",
-    ],
-    whoIsItFor: [
-      "JavaScript bilan tanish bo'lmagan boshlovchilar uchun",
-      "Karyerasini o'zgartirmoqchi bo'lganlar uchun",
-      "Frontend yoki fullstack dasturchi bo'lishni xohlaganlar uchun",
-      "Yangi mahorat o'rganishga qiziqqan har kim uchun",
-    ],
-    requiredSkills: ["HTML asoslari", "CSS asoslari", "Mantiqiy fikrlash"],
-    format: "100% online",
-    startDate: "Hoziroq",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "24 ta video dars",
-      "5 ta amaliy loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-2",
@@ -121,45 +62,6 @@ export const courses: Course[] = [
     lessonsCount: 32,
     price: 790000,
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600",
-    reviewsCount: 248,
-    studentsCount: 410,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Diyora Yusupova",
-      title: "React Senior Developer",
-      avatar: "https://i.pravatar.cc/100?img=45",
-    },
-    aboutText: [
-      "React — zamonaviy frontend ishlab chiqishning yetakchi kutubxonasi. Bu kursda siz komponent-asosli arxitektura, Hooks, va katta ilovalar uchun state boshqaruvini chuqur o'rganasiz.",
-      "Kurs davomida real loyihalar ustida ishlaysiz — bittasi to'liq e-commerce ilova bo'ladi.",
-    ],
-    whatYouLearn: [
-      "Komponentlar va props",
-      "useState, useEffect va boshqa hooklar",
-      "React Router DOM",
-      "Redux va Zustand bilan state boshqaruvi",
-      "API bilan ishlash (Axios, React Query)",
-      "Performance optimizatsiya",
-      "Next.js asoslari",
-      "Testing (React Testing Library)",
-    ],
-    whoIsItFor: [
-      "JavaScript asoslarini biladigan dasturchilar uchun",
-      "Frontend yo'nalishida chuqurlashmoqchi bo'lganlar uchun",
-      "SPA ilovalar qurishni o'rganmoqchi bo'lganlar uchun",
-    ],
-    requiredSkills: ["JavaScript", "HTML/CSS", "ES6+"],
-    format: "100% online",
-    startDate: "Har oy boshida",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "32 ta video dars",
-      "4 ta real loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-3",
@@ -173,44 +75,6 @@ export const courses: Course[] = [
     lessonsCount: 40,
     price: 890000,
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600",
-    reviewsCount: 197,
-    studentsCount: 305,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Madina Saidova",
-      title: "Product Designer",
-      avatar: "https://i.pravatar.cc/100?img=32",
-    },
-    aboutText: [
-      "UX/UI dizayn — foydalanuvchi va mahsulot orasidagi ko'prik. Bu kursda siz foydalanuvchi tadqiqotidan tortib, to'liq interaktiv prototip yaratishgacha bo'lgan barcha bosqichlarni o'rganasiz.",
-      "Kurs oxirida sizda professional darajadagi portfolio loyihalari bo'ladi.",
-    ],
-    whatYouLearn: [
-      "Figma bilan ishlash",
-      "Foydalanuvchi tadqiqi (User Research)",
-      "Wireframe va prototiplash",
-      "Dizayn tizimlari (Design Systems)",
-      "Tipografiya va rang nazariyasi",
-      "Foydalanuvchi testlari",
-      "Portfolio tayyorlash",
-    ],
-    whoIsItFor: [
-      "Dizaynga qiziqqan boshlovchilar uchun",
-      "Karyerasini dizayn sohasiga o'zgartirmoqchi bo'lganlar uchun",
-      "Mahsulot dizayneri bo'lishni xohlaganlar uchun",
-    ],
-    requiredSkills: ["Badiiy did", "Kompyuterda ishlash", "Mantiqiy fikrlash"],
-    format: "100% online",
-    startDate: "Hoziroq",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "40 ta video dars",
-      "6 ta portfolio loyihasi",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-4",
@@ -225,45 +89,6 @@ export const courses: Course[] = [
     price: 790000,
     oldPrice: 990000,
     image: "https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?w=600",
-    reviewsCount: 281,
-    studentsCount: 460,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Jasur Rashidov",
-      title: "Backend Tech Lead",
-      avatar: "https://i.pravatar.cc/100?img=15",
-    },
-    aboutText: [
-      "Python — sodda sintaksisi va keng imkoniyatlari bilan eng mashhur dasturlash tillaridan biri. Bu kursda siz noldan to'liq backend dasturchi darajasiga ko'tarilasiz.",
-      "Django framework, ma'lumotlar bazalari va REST API yaratishni amaliy loyihalar orqali o'rganasiz.",
-    ],
-    whatYouLearn: [
-      "Python asoslari va sintaksisi",
-      "OOP printsiplari",
-      "Django framework",
-      "REST API yaratish",
-      "PostgreSQL bilan ishlash",
-      "Autentifikatsiya va avtorizatsiya",
-      "Docker asoslari",
-      "Deploy qilish",
-    ],
-    whoIsItFor: [
-      "Dasturlashni noldan o'rganmoqchi bo'lganlar uchun",
-      "Backend dasturchi bo'lishni xohlaganlar uchun",
-      "Karyerasini IT sohasiga o'zgartirmoqchi bo'lganlar uchun",
-    ],
-    requiredSkills: ["Mantiqiy fikrlash", "Kompyuterda ishlash"],
-    format: "100% online",
-    startDate: "Har oy boshida",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "48 ta video dars",
-      "5 ta amaliy loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-5",
@@ -277,44 +102,6 @@ export const courses: Course[] = [
     lessonsCount: 36,
     price: 990000,
     image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600",
-    reviewsCount: 156,
-    studentsCount: 220,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Bekzod Tursunov",
-      title: "Mobile Developer",
-      avatar: "https://i.pravatar.cc/100?img=22",
-    },
-    aboutText: [
-      "Flutter — bitta kod bazasi bilan iOS va Android uchun ilovalar yaratish imkonini beradi. Bu kursda siz Dart tilini va Flutter frameworkini chuqur o'rganasiz.",
-      "Kurs davomida to'liq funksional mobil ilova yaratib, App Store va Play Store'ga joylashtirish bosqichlarini ham ko'rib chiqasiz.",
-    ],
-    whatYouLearn: [
-      "Dart tili asoslari",
-      "Flutter widget'lari",
-      "State management (Provider, Bloc)",
-      "REST API bilan ishlash",
-      "Local ma'lumotlar bazasi (SQLite)",
-      "Push notification",
-      "App Store/Play Store'ga joylashtirish",
-    ],
-    whoIsItFor: [
-      "JavaScript yoki boshqa tilni biladigan dasturchilar uchun",
-      "Mobil dasturchi bo'lishni xohlaganlar uchun",
-      "Cross-platform ilovalar qurishni o'rganmoqchi bo'lganlar uchun",
-    ],
-    requiredSkills: ["OOP asoslari", "Mantiqiy fikrlash"],
-    format: "100% online",
-    startDate: "Har oy boshida",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "36 ta video dars",
-      "3 ta amaliy loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-6",
@@ -327,44 +114,6 @@ export const courses: Course[] = [
     lessonsCount: 50,
     price: 1200000,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600",
-    reviewsCount: 98,
-    studentsCount: 145,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Shoira Nazarova",
-      title: "Data Scientist",
-      avatar: "https://i.pravatar.cc/100?img=47",
-    },
-    aboutText: [
-      "Data Science — ma'lumotlardan qiymatli xulosalar chiqarish san'ati. Bu kursda siz Python asosida ma'lumotlarni tahlil qilish va Machine Learning modellarini qurishni o'rganasiz.",
-      "Real datasetlar bilan ishlab, sanoat darajasidagi loyihalar yaratasiz.",
-    ],
-    whatYouLearn: [
-      "Pandas va NumPy",
-      "Ma'lumotlarni vizualizatsiya qilish",
-      "Statistika asoslari",
-      "Machine Learning algoritmlari",
-      "Scikit-learn",
-      "Neural Networks asoslari",
-      "Real loyihalar bilan ishlash",
-    ],
-    whoIsItFor: [
-      "Python bilgan dasturchilar uchun",
-      "Matematika va statistikaga qiziqqanlar uchun",
-      "Data Scientist bo'lishni xohlaganlar uchun",
-    ],
-    requiredSkills: ["Python", "Matematika asoslari", "Statistika"],
-    format: "100% online",
-    startDate: "Har chorakda",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "50 ta video dars",
-      "4 ta real loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-7",
@@ -377,48 +126,6 @@ export const courses: Course[] = [
     lessonsCount: 56,
     price: 1500000,
     image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600",
-    reviewsCount: 87,
-    studentsCount: 120,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Sardor Aliyev",
-      title: "DevOps Engineer",
-      avatar: "https://i.pravatar.cc/100?img=8",
-    },
-    aboutText: [
-      "DevOps — dasturiy ta'minotni tez va ishonchli yetkazib berish madaniyati va amaliyotlari. Bu kursda siz Linux, konteynerlashtirish va bulut texnologiyalarini chuqur o'rganasiz.",
-      "Kurs davomida to'liq CI/CD pipeline qurib, real loyihani productionga deploy qilasiz.",
-    ],
-    whatYouLearn: [
-      "Linux administratsiyasi",
-      "Docker va konteynerlashtirish",
-      "Kubernetes asoslari",
-      "CI/CD pipeline qurish",
-      "AWS bulut xizmatlari",
-      "Monitoring va logging",
-      "Infrastructure as Code (Terraform)",
-    ],
-    whoIsItFor: [
-      "Backend dasturchilar uchun",
-      "Tizim administratorlari uchun",
-      "DevOps yo'nalishida rivojlanmoqchi bo'lganlar uchun",
-    ],
-    requiredSkills: [
-      "Linux asoslari",
-      "Tarmoq asoslari",
-      "Dasturlash tajribasi",
-    ],
-    format: "100% online",
-    startDate: "Har chorakda",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "56 ta video dars",
-      "3 ta real loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-8",
@@ -432,44 +139,6 @@ export const courses: Course[] = [
     lessonsCount: 28,
     price: 690000,
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600",
-    reviewsCount: 203,
-    studentsCount: 380,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Nilufar Ergasheva",
-      title: "Marketing Strategist",
-      avatar: "https://i.pravatar.cc/100?img=29",
-    },
-    aboutText: [
-      "Raqamli marketing — har qanday biznesning o'sishi uchun zarur ko'nikma. Bu kursda siz SMM, SEO va reklama kampaniyalarini noldan o'rganasiz.",
-      "Kurs davomida real brendlar uchun marketing strategiyalari ishlab chiqasiz.",
-    ],
-    whatYouLearn: [
-      "SMM strategiyasi",
-      "Kontent marketing",
-      "Google Ads",
-      "SEO asoslari",
-      "Analitika (Google Analytics)",
-      "Email marketing",
-      "Brendni qurish",
-    ],
-    whoIsItFor: [
-      "Marketingga qiziqqan boshlovchilar uchun",
-      "O'z biznesini rivojlantirmoqchi bo'lganlar uchun",
-      "SMM mutaxassisi bo'lishni xohlaganlar uchun",
-    ],
-    requiredSkills: ["Ijodiy fikrlash", "Kompyuterda ishlash"],
-    format: "100% online",
-    startDate: "Hoziroq",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "28 ta video dars",
-      "4 ta amaliy loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-9",
@@ -483,44 +152,6 @@ export const courses: Course[] = [
     lessonsCount: 40,
     price: 890000,
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600",
-    reviewsCount: 174,
-    studentsCount: 290,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Otabek Yo'ldoshev",
-      title: "Backend Developer",
-      avatar: "https://i.pravatar.cc/100?img=11",
-    },
-    aboutText: [
-      "Node.js — JavaScript yordamida server tomonda ishlash imkonini beradi. Bu kursda siz Express.js va MongoDB asosida to'liq backend tizimlar qurishni o'rganasiz.",
-      "Real-time ilovalar uchun WebSocket texnologiyasini ham chuqur o'rganasiz.",
-    ],
-    whatYouLearn: [
-      "Node.js va Express.js",
-      "MongoDB va Mongoose",
-      "REST API arxitekturasi",
-      "JWT autentifikatsiya",
-      "WebSocket bilan real-time ilovalar",
-      "Xatoliklarni boshqarish",
-      "Testing va deploy",
-    ],
-    whoIsItFor: [
-      "JavaScript bilgan dasturchilar uchun",
-      "Backend dasturchi bo'lishni xohlaganlar uchun",
-      "Fullstack dasturchi bo'lishni rejalashtirganlar uchun",
-    ],
-    requiredSkills: ["JavaScript", "Asinxron dasturlash asoslari"],
-    format: "100% online",
-    startDate: "Har oy boshida",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "40 ta video dars",
-      "4 ta real loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-10",
@@ -534,44 +165,6 @@ export const courses: Course[] = [
     lessonsCount: 16,
     price: 390000,
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600",
-    reviewsCount: 356,
-    studentsCount: 612,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Kamola Ibragimova",
-      title: "Frontend Developer",
-      avatar: "https://i.pravatar.cc/100?img=38",
-    },
-    aboutText: [
-      "HTML va CSS — har qanday veb-sayt qurishning poydevori. Bu kurs hech qanday tajribasi bo'lmagan boshlovchilar uchun mo'ljallangan.",
-      "Kurs oxirida siz to'liq responsive veb-sahifalarni mustaqil qura olasiz.",
-    ],
-    whatYouLearn: [
-      "Semantik HTML",
-      "CSS asoslari va selektorlar",
-      "Flexbox",
-      "CSS Grid",
-      "Responsive dizayn",
-      "CSS animatsiyalari",
-      "Git asoslari",
-    ],
-    whoIsItFor: [
-      "Dasturlashni noldan boshlamoqchi bo'lganlar uchun",
-      "Frontend dasturchi bo'lishni xohlaganlar uchun",
-      "Veb-sayt qurishni o'rganmoqchi bo'lgan har kim uchun",
-    ],
-    requiredSkills: ["Kompyuterda ishlash"],
-    format: "100% online",
-    startDate: "Hoziroq",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "16 ta video dars",
-      "3 ta amaliy loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-11",
@@ -585,44 +178,6 @@ export const courses: Course[] = [
     lessonsCount: 32,
     price: 690000,
     image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600",
-    reviewsCount: 142,
-    studentsCount: 210,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Farrux Yusupov",
-      title: "Graphic Designer",
-      avatar: "https://i.pravatar.cc/100?img=19",
-    },
-    aboutText: [
-      "Grafik dizayn — vizual kommunikatsiyaning kuchli vositasi. Bu kursda siz Adobe Illustrator va Photoshop yordamida professional dizaynlar yaratishni o'rganasiz.",
-      "Kurs davomida real mijozlar uchun brending loyihalari ustida ishlaysiz.",
-    ],
-    whatYouLearn: [
-      "Adobe Illustrator asoslari",
-      "Adobe Photoshop",
-      "Logo yaratish",
-      "Brending va vizual identifika",
-      "Tipografiya",
-      "Plakat va banner dizayni",
-      "Portfolio tayyorlash",
-    ],
-    whoIsItFor: [
-      "Dizaynga qiziqqan boshlovchilar uchun",
-      "Freelance dizayner bo'lishni xohlaganlar uchun",
-      "Brending bilan shug'ullanmoqchi bo'lganlar uchun",
-    ],
-    requiredSkills: ["Badiiy did", "Kompyuterda ishlash"],
-    format: "100% online",
-    startDate: "Har oy boshida",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "32 ta video dars",
-      "5 ta portfolio loyihasi",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
   {
     id: "course-12",
@@ -636,43 +191,5 @@ export const courses: Course[] = [
     lessonsCount: 20,
     price: 590000,
     image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600",
-    reviewsCount: 168,
-    studentsCount: 265,
-    language: "O'zbek tilida",
-    instructor: {
-      name: "Akmal Karimov",
-      title: "JavaScript Lead",
-      avatar: "https://i.pravatar.cc/100?img=12",
-    },
-    aboutText: [
-      "TypeScript — JavaScript ustiga qurilgan, tip xavfsizligini ta'minlaydigan til. Bu kursda siz katta loyihalarda xatolarni kamaytirish va kodni boshqarishni osonlashtirishni o'rganasiz.",
-      "Real React va Node.js loyihalarida TypeScript qo'llashni amaliyotda ko'rib chiqasiz.",
-    ],
-    whatYouLearn: [
-      "TypeScript asoslari va tiplar",
-      "Interface va Type",
-      "Generic'lar",
-      "Decorator'lar",
-      "TypeScript bilan React",
-      "TypeScript bilan Node.js",
-      "Katta loyihalarda arxitektura",
-    ],
-    whoIsItFor: [
-      "JavaScript bilgan dasturchilar uchun",
-      "Katta loyihalarda ishlaydigan dasturchilar uchun",
-      "Kod sifatini oshirmoqchi bo'lganlar uchun",
-    ],
-    requiredSkills: ["JavaScript", "ES6+"],
-    format: "100% online",
-    startDate: "Har oy boshida",
-    access: "Umrbod",
-    hasCertificate: true,
-    features: [
-      "20 ta video dars",
-      "3 ta amaliy loyiha",
-      "Sertifikat",
-      "Mentor bilan aloqa",
-      "Bo'lib to'lash mumkin",
-    ],
   },
 ];

@@ -1,8 +1,8 @@
 import { Icon } from "../ui/Icon";
-import type { Course } from "../../data/courses.data";
+import type { CourseDetail } from "../../data/courseDetail.data";
 
 interface CourseDetailContentProps {
-  course: Course;
+  course: CourseDetail;
 }
 
 const CourseDetailContent = ({ course }: CourseDetailContentProps) => {

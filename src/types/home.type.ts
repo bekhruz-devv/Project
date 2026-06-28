@@ -35,6 +35,14 @@ export interface Teacher {
   courses: string;
   students: string;
   rating: string;
+  category:
+    | "Frontend"
+    | "Backend"
+    | "Dizayn"
+    | "Mobil"
+    | "Marketing"
+    | "Data Science"
+    | "DevOps";
 }
 
 export interface Testimonial {

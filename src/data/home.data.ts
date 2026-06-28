@@ -182,6 +182,7 @@ export const teachers: Teacher[] = [
     courses: "12",
     students: "540",
     rating: "4.9",
+    category: "Frontend",
   },
   {
     photo: "https://i.pravatar.cc/150?img=45",
@@ -191,6 +192,7 @@ export const teachers: Teacher[] = [
     courses: "8",
     students: "320",
     rating: "4.9",
+    category: "Dizayn",
   },
   {
     photo: "https://i.pravatar.cc/150?img=33",
@@ -200,6 +202,7 @@ export const teachers: Teacher[] = [
     courses: "15",
     students: "680",
     rating: "4.8",
+    category: "Backend",
   },
   {
     photo: "https://i.pravatar.cc/150?img=47",
@@ -209,6 +212,7 @@ export const teachers: Teacher[] = [
     courses: "6",
     students: "280",
     rating: "4.8",
+    category: "Frontend",
   },
   {
     photo: "https://i.pravatar.cc/150?img=26",
@@ -218,6 +222,7 @@ export const teachers: Teacher[] = [
     courses: "4",
     students: "160",
     rating: "4.7",
+    category: "Data Science",
   },
   {
     photo: "https://i.pravatar.cc/150?img=14",
@@ -227,6 +232,7 @@ export const teachers: Teacher[] = [
     courses: "5",
     students: "210",
     rating: "4.8",
+    category: "Mobil",
   },
 ];
 

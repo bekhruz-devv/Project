@@ -1,17 +1,27 @@
 import { Icon } from "../ui/Icon";
 import TeacherCard from "../ui/TeacherCard";
-import { allTeachers } from "../../data/teachers.data";
+import type { Teacher } from "../../types/home.type";
 
 const pages = ["1", "2", "3"];
 
-const TeachersGrid = () => {
+interface TeachersGridProps {
+  teachers: Teacher[];
+}
+
+const TeachersGrid = ({ teachers }: TeachersGridProps) => {
   return (
     <div>
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {allTeachers.map((teacher) => (
+        {teachers.map((teacher) => (
           <TeacherCard key={teacher.name} teacher={teacher} />
         ))}
       </div>
+
+      {teachers.length === 0 && (
+        <p className="mt-10 text-center text-gray-500">
+          Hech qanday o'qituvchi topilmadi.
+        </p>
+      )}
 
       <div className="mt-12 flex items-center justify-center gap-x-2">
         <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-400 hover:text-gray-700">

@@ -13,6 +13,7 @@ import Faq from "../pages/Faq";
 import Courses from "../pages/Courses";
 import Pricing from "../pages/Pricing";
 import CourseDetail from "../pages/CourseDetail";
+import TeacherDetail from "../pages/TeacherDetail";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const routes = createBrowserRouter([
           {
             path: "/teachers",
             element: <Teachers />,
+          },
+          {
+            path: "/teachers/akmal-karimov",
+            element: <TeacherDetail />,
           },
           {
             path: "/contact",
@@ -46,7 +51,7 @@ const routes = createBrowserRouter([
             element: <Pricing />,
           },
           {
-            path: "/courses/:id",
+            path: "/courses/course-1",
             element: <CourseDetail />,
           },
         ],

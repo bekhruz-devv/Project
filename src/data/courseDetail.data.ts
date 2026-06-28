@@ -1,0 +1,56 @@
+export const courseDetailData = {
+  id: "course-1",
+  title: "JavaScript dasturlash",
+  description:
+    "Nolinchi darajadan boshlab to'liq stack frontend dasturchi bo'lish. ES6+, DOM, asinxronlik, REST API va 5 ta real loyiha bilan amaliy tajriba.",
+  category: "Frontend",
+  level: "Boshlovchi",
+  rating: 4.9,
+  reviewsCount: 312,
+  studentsCount: 540,
+  durationMonths: 3,
+  lessonsCount: 24,
+  language: "O'zbek tilida",
+  price: 490000,
+  oldPrice: 690000,
+  image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600",
+  instructor: {
+    name: "Akmal Karimov",
+    title: "JavaScript Lead",
+    avatar: "https://i.pravatar.cc/100?img=12",
+  },
+  aboutText: [
+    "JavaScript — zamonaviy web ilovalarining asosi. Bu kurs sizga hech qanday oldindan tajriba kerak emas — biz noldan boshlab to'liq fullstack JavaScript dasturchisigacha ko'taramiz.",
+    "Har bir mavzu nazariy darsdan keyin amaliy mashqlar bilan mustahkamlanadi. Kurs davomida 5 ta real biznes loyihasi ustida ishlaysiz — bular sizning portfolioda bo'ladi.",
+  ],
+  whatYouLearn: [
+    "JavaScript asoslari va sintaksisi",
+    "DOM va sahifa bilan ishlash",
+    "Fetch API va REST",
+    "OOP printsiplari",
+    "ES6+: arrow, destructuring, spread",
+    "Asinxronlik va Promise",
+    "Git va GitHub bilan ishlash",
+    "Test yozish (Jest)",
+  ],
+  whoIsItFor: [
+    "JavaScript bilan tanish bo'lmagan boshlovchilar uchun",
+    "Karyerasini o'zgartirmoqchi bo'lganlar uchun",
+    "Frontend yoki fullstack dasturchi bo'lishni xohlaganlar uchun",
+    "Yangi mahorat o'rganishga qiziqqan har kim uchun",
+  ],
+  requiredSkills: ["HTML asoslari", "CSS asoslari", "Mantiqiy fikrlash"],
+  format: "100% online",
+  startDate: "Hoziroq",
+  access: "Umrbod",
+  hasCertificate: true,
+  features: [
+    "24 ta video dars",
+    "5 ta amaliy loyiha",
+    "Sertifikat",
+    "Mentor bilan aloqa",
+    "Bo'lib to'lash mumkin",
+  ],
+};
+
+export type CourseDetail = typeof courseDetailData;

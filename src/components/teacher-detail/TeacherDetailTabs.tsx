@@ -1,16 +1,16 @@
-const tabs = ["Tavsif", "Dastur", "O'qituvchi", "Sharhlar"];
+const tabs = ["Haqida", "Kurslari", "Sharhlar"];
 
-interface CourseDetailTabsProps {
+interface TeacherDetailTabsProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
-  reviewsCount: number;
+  coursesCount: number;
 }
 
-const CourseDetailTabs = ({
+const TeacherDetailTabs = ({
   activeTab,
   onTabChange,
-  reviewsCount,
-}: CourseDetailTabsProps) => {
+  coursesCount,
+}: TeacherDetailTabsProps) => {
   return (
     <div className="border-b border-gray-200">
       <div className="mx-auto flex max-w-6xl gap-x-8 px-4 sm:px-6 lg:px-8">
@@ -24,7 +24,7 @@ const CourseDetailTabs = ({
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
-            {tab === "Sharhlar" ? `${tab} (${reviewsCount})` : tab}
+            {tab === "Kurslari" ? `${tab} (${coursesCount})` : tab}
           </button>
         ))}
       </div>
@@ -32,4 +32,4 @@ const CourseDetailTabs = ({
   );
 };
 
-export default CourseDetailTabs;
+export default TeacherDetailTabs;

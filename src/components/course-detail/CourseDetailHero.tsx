@@ -1,13 +1,12 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Icon } from "../ui/Icon";
-import { courses } from "../../data/courses.data";
+import type { CourseDetail } from "../../data/courseDetail.data";
 
-const CourseDetailHero = () => {
-  const { id } = useParams();
-  const course = courses.find((c) => c.id === id);
+interface CourseDetailHeroProps {
+  course: CourseDetail;
+}
 
-  if (!course) return null;
-
+const CourseDetailHero = ({ course }: CourseDetailHeroProps) => {
   return (
     <section className="bg-gradient-to-br from-blue-600 to-purple-600 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_380px]">

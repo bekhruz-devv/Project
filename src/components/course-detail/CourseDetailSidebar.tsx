@@ -1,7 +1,7 @@
-import type { Course } from "../../data/courses.data";
+import type { CourseDetail } from "../../data/courseDetail.data";
 
 interface CourseDetailSidebarProps {
-  course: Course;
+  course: CourseDetail;
 }
 
 const CourseDetailSidebar = ({ course }: CourseDetailSidebarProps) => {

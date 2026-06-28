@@ -1,7 +1,19 @@
 import { Icon } from "../ui/Icon";
 import { teacherFilters } from "../../data/teachers.data";
 
-const TeachersToolbar = () => {
+interface TeachersToolbarProps {
+  searchText: string;
+  onSearchChange: (value: string) => void;
+  activeFilter: string;
+  onFilterChange: (filter: string) => void;
+}
+
+const TeachersToolbar = ({
+  searchText,
+  onSearchChange,
+  activeFilter,
+  onFilterChange,
+}: TeachersToolbarProps) => {
   return (
     <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
       <label className="relative block w-full max-w-sm">
@@ -10,17 +22,20 @@ const TeachersToolbar = () => {
         </span>
         <input
           type="text"
+          value={searchText}
+          onChange={(e) => onSearchChange(e.target.value)}
           placeholder="O'qituvchi ismini qidiring..."
           className="w-full rounded-lg border border-gray-200 py-2.5 pl-11 pr-4 text-sm placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
         />
       </label>
 
       <div className="flex flex-wrap items-center gap-2">
-        {teacherFilters.map((filter, index) => (
+        {teacherFilters.map((filter) => (
           <button
             key={filter}
+            onClick={() => onFilterChange(filter)}
             className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-              index === 0
+              activeFilter === filter
                 ? "bg-blue-600 text-white"
                 : "border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
             }`}

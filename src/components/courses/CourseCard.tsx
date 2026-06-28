@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "../ui/Icon";
 import type { Course } from "../../data/courses.data";
 
-interface CourseCardProps {
+export interface CourseCardProps {
   course: Course;
 }
 
@@ -55,12 +55,18 @@ const CourseCard = ({ course }: CourseCardProps) => {
               {course.price.toLocaleString("uz-UZ")} so'm
             </span>
           </div>
-          <Link
-            to={`/courses/${course.id}`}
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-          >
-            Batafsil
-          </Link>
+          {course.id === "course-1" ? (
+            <Link
+              to="/courses/course-1"
+              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              Batafsil
+            </Link>
+          ) : (
+            <span className="cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700">
+              Batafsil
+            </span>
+          )}
         </div>
       </div>
     </div>

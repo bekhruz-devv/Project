@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { courses } from "../data/courses.data";
+import { courseDetailData } from "../data/courseDetail.data";
 import CourseDetailHero from "../components/course-detail/CourseDetailHero";
 import CourseDetailTabs from "../components/course-detail/CourseDetailTabs";
 import CourseDetailContent from "../components/course-detail/CourseDetailContent";
@@ -8,21 +7,12 @@ import CourseDetailSidebar from "../components/course-detail/CourseDetailSidebar
 import SimilarCourses from "../components/course-detail/SimilarCourses";
 
 const CourseDetail = () => {
-  const { id } = useParams();
   const [activeTab, setActiveTab] = useState("Tavsif");
-  const course = courses.find((c) => c.id === id);
-
-  if (!course) {
-    return (
-      <div className="px-4 py-20 text-center">
-        <p className="text-lg text-gray-500">Kurs topilmadi.</p>
-      </div>
-    );
-  }
+  const course = courseDetailData;
 
   return (
     <>
-      <CourseDetailHero />
+      <CourseDetailHero course={course} />
       <CourseDetailTabs
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -54,7 +44,7 @@ const CourseDetail = () => {
         </div>
       </div>
 
-      <SimilarCourses currentCourseId={course.id} category={course.category} />
+      <SimilarCourses />
     </>
   );
 };
