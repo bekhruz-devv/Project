@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
 import type { RegisterForm } from "../types/register.type";
+import { useRegister } from "../hooks/api/useRegister";
+import { setItem } from "../utils/localstorage";
+import { toast } from "react-toastify";
 
 const features = [
   "Birinchi darslar bepul",
@@ -12,8 +15,9 @@ const features = [
   "Ish ta'minoti — 100+ hamkor kompaniya",
 ];
 
-const RegisterPage = () => {
+const Register = () => {
   const form = useForm<RegisterForm>();
+  const { mutateAsync, isSuccess, data, isPending } = useRegister();
   const [showPassword, setShowPassword] = useState("password");
   const [showConfirm, setShowConfirm] = useState("password");
   const {
@@ -21,8 +25,21 @@ const RegisterPage = () => {
   } = form;
 
   const onSubmit = (data: RegisterForm) => {
-    console.log(data);
+    delete data.confirmPassword;
+    delete data.terms;
+    mutateAsync(data);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      const token: string = data?.data.data.tokens?.accessToken;
+      setItem(token);
+      toast.success("Ro'yxatdan o'tish yakunlandi");
+      setTimeout(() => {
+        window.location.replace("/dashboard");
+      }, 2000);
+    }
+  }, [isSuccess]);
 
   return (
     <div className="flex min-h-screen bg-white">
@@ -40,9 +57,8 @@ const RegisterPage = () => {
             Bizning oilamizga qo'shiling.
           </h1>
           <p className="mt-5 text-base leading-relaxed text-blue-100">
-            5000+ bitiruvchi bizning oilamiz tarkibida. Endi navbat <br />
-            sizniki. Bilim olishni davom ettiring va karyera <br />{" "}
-            maqsadlaringizga yeting.
+            Ro'yxatdan o'ting va bepul birinchi darsga taklif oling. 5000+
+            talaba bilan birga o'rgning va karyera yo'lingizni boshlang.
           </p>
 
           <ul className="mt-8 flex flex-col gap-y-4">
@@ -65,7 +81,7 @@ const RegisterPage = () => {
 
       {/* O'ng panel */}
       <main className="flex w-full flex-col px-6 py-8 sm:px-12 lg:w-1/2">
-        <div className="flex justify-end mb-8">
+        <div className="flex justify-end">
           <Link
             to="/"
             className="flex items-center gap-x-1.5 text-sm font-medium text-slate-500 transition hover:text-slate-800"
@@ -74,6 +90,7 @@ const RegisterPage = () => {
             Bosh sahifaga
           </Link>
         </div>
+
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-6">
           <h2 className="text-3xl font-bold text-slate-900">
             Yangi hisob yarating
@@ -89,13 +106,13 @@ const RegisterPage = () => {
           >
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Input
-                name="firstname"
+                name="firstName"
                 placeholder="Aziz"
                 form={form}
                 type="text"
                 label="Ism"
                 required
-                error={errors.firstname?.message}
+                error={errors.firstName?.message}
                 rules={{
                   required: "Ism kiritilishi shart",
                   minLength: {
@@ -113,13 +130,13 @@ const RegisterPage = () => {
                 }}
               />
               <Input
-                name="lastname"
+                name="lastName"
                 type="text"
                 form={form}
                 placeholder="Karimov"
                 label="Familiya"
                 required
-                error={errors.lastname?.message}
+                error={errors.lastName?.message}
                 rules={{
                   required: "Familiya kiritilishi shart",
                   minLength: {
@@ -266,6 +283,7 @@ const RegisterPage = () => {
               type="submit"
               variant="primary"
               fullWidth
+              loading={isPending}
               rightIcon={<Icon.arrowRight />}
               className="mt-1 cursor-pointer"
             >
@@ -306,4 +324,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default Register;

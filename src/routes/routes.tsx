@@ -1,30 +1,63 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
-import Teachers from "../pages/Teachers";
+import RootLayout from "../components/layouts/RootLayout";
+import DashboardLayout from "../components/layouts/DashboardLayout";
+import Login from "../pages/Login";
 import Contact from "../pages/Contact";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
+import Register from "../pages/Register";
+import StudentDashboard from "../pages/StudentDashboard";
+import Teachers from "../pages/Teachers";
+import Home from "../pages/Home";
+import ProtectedRoute from "./protected.route";
+import AuthLayout from "../components/layouts/AuthLayout";
 
 const routes = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/teachers",
-    element: <Teachers />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
+    element: <AuthLayout />,
+    children: [
+      {
+        element: <RootLayout />,
+        children: [
+          {
+            index: true,
+            element: <Home />,
+          },
+          {
+            path: "/teachers",
+            element: <Teachers />,
+          },
+          {
+            path: "/contact",
+            element: <Contact />,
+          },
+        ],
+      },
+      {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <StudentDashboard />,
+          },
+        ],
+      },
+    ],
   },
   {
     path: "/login",
-    element: <LoginPage />,
+    element: (
+      <ProtectedRoute>
+        <Login />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/register",
-    element: <RegisterPage />,
+    element: (
+      <ProtectedRoute>
+        <Register />,
+      </ProtectedRoute>
+    ),
   },
 ]);
 export default routes;

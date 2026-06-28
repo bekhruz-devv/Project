@@ -1,10 +1,11 @@
 import { create } from "zustand";
 import type { IUserStore } from "../types/user.store.type";
+
 const useUserStore = create<IUserStore>((set) => {
   return {
     user: null,
     isAuthenticated: false,
-    setUser: (user: { name: string; email: string }) => {
+    setUser: (user: { firstName: string; lastName: string; email: string }) => {
       set((state) => ({ ...state, user, isAuthenticated: true }));
     },
     logout: () => {
@@ -12,4 +13,5 @@ const useUserStore = create<IUserStore>((set) => {
     },
   };
 });
+
 export default useUserStore;

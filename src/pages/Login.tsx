@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
 import type { LoginForm } from "../types/login.type";
+import { useLogin } from "../hooks/api/useLogin";
+import { setItem } from "../utils/localstorage";
+import { toast } from "react-toastify";
 
 const features = [
   "Onlayn platforma — istalgan vaqtda darslar",
@@ -12,16 +15,34 @@ const features = [
   "Davlat tomonidan tan olingan sertifikat",
 ];
 
-const LoginPage = () => {
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const Login = () => {
   const form = useForm<LoginForm>();
+  const { mutateAsync, isSuccess, data, isPending } = useLogin();
   const [showPassword, setShowPassword] = useState("password");
   const {
     formState: { errors },
+    watch,
   } = form;
 
-  const onSubmit = (data: LoginForm) => {
-    console.log(data);
+  const emailValue = watch("identifier");
+  const emailValid = emailPattern.test(emailValue ?? "");
+
+  const onSubmit = (values: LoginForm) => {
+    mutateAsync(values);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      const token: string = data?.data.data.tokens?.accessToken;
+      setItem(token);
+      toast.success("Tizimga muvaffaqiyatli kirdingiz");
+      setTimeout(() => {
+        window.location.replace("/dashboard");
+      }, 1500);
+    }
+  }, [isSuccess]);
 
   return (
     <div className="flex min-h-screen bg-white">
@@ -36,13 +57,11 @@ const LoginPage = () => {
 
         <div className="max-w-md">
           <h1 className="text-4xl font-bold leading-tight">
-            Bilim — kelajakka eng <br />
-            yaxshi sarmoyadir.
+            Bilim — kelajakka eng yaxshi sarmoyadir.
           </h1>
           <p className="mt-5 text-base leading-relaxed text-blue-100">
-            5000+ bitiruvchi bizning oilamiz tarkibida. Endi navbat <br />
-            sizniki. Bilim olishni davom ettiring va karyera <br />{" "}
-            maqsadlaringizga yeting.
+            5000+ bitiruvchi bizning oilamiz tarkibida. Endi navbat sizniki.
+            Bilim olishni davom ettiring va karyera maqsadlaringizga yeting.
           </p>
 
           <ul className="mt-8 flex flex-col gap-y-4">
@@ -65,7 +84,7 @@ const LoginPage = () => {
 
       {/* O'ng panel */}
       <main className="flex w-full flex-col px-6 py-8 sm:px-12 lg:w-1/2">
-        <div className="flex justify-end mb-8">
+        <div className="flex justify-end">
           <Link
             to="/"
             className="flex items-center gap-x-1.5 text-sm font-medium text-slate-500 transition hover:text-slate-800"
@@ -74,6 +93,7 @@ const LoginPage = () => {
             Bosh sahifaga
           </Link>
         </div>
+
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-6">
           <h2 className="text-3xl font-bold text-slate-900">
             Hisobingizga kiring
@@ -84,23 +104,25 @@ const LoginPage = () => {
 
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="mt-1 flex flex-col gap-y-4"
+            className="mt-7 flex flex-col gap-y-4"
             noValidate
           >
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2"></div>
             <Input
-              name="email"
+              name="identifier"
               type="email"
               form={form}
-              placeholder="aziz@example.com"
+              placeholder="aziz@example.uz"
               label="Email yoki telefon raqam"
               required
               leftIcon={<Icon.mail />}
-              error={errors.email?.message}
+              error={errors.identifier?.message}
+              success={
+                emailValid ? "Email manzili to'g'ri formatda" : undefined
+              }
               rules={{
                 required: "Email kiritilishi shart",
                 pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  value: emailPattern,
                   message: "Email manzil noto'g'ri kiritilgan",
                 },
               }}
@@ -109,24 +131,16 @@ const LoginPage = () => {
               name="password"
               type={showPassword}
               form={form}
-              placeholder="Kamida 8 ta belgi"
+              placeholder="Parolingizni kiriting"
               label="Parol"
               required
+              leftIcon={<Icon.lock />}
               error={errors.password?.message}
-              leftIcon={<Icon.passwordIcon />}
               rules={{
-                required: "Parol kiritilishi shart",
-                pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
-                  message: "Parol mos emas",
-                },
+                required: "Parol maydoni bo'sh bo'lishi mumkin emas",
                 minLength: {
                   value: 6,
-                  message: "Password kamida 3 ta harfdan iborat bo'lishi kerak",
-                },
-                maxLength: {
-                  value: 30,
-                  message: "Password 30 ta harfdan oshmasligi kerak",
+                  message: "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
                 },
               }}
               rightIcon={
@@ -143,32 +157,32 @@ const LoginPage = () => {
                 </button>
               }
             />
-            <label className="flex justify-between items-center mb-3 select-none">
-              <label className="flex items-center gap-x-3 cursor-pointer">
+
+            <div className="flex items-center justify-between">
+              <label className="flex items-center gap-x-2 text-sm text-slate-600">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 rounded border-gray-300 text-[#2563EB] focus:ring-[#2563EB]"
+                  className="h-4 w-4 cursor-pointer rounded border-slate-300 text-blue-600 focus:ring-blue-200"
                 />
-                <span className="text-[14px] text-black font-normal">
-                  Meni eslab qol
-                </span>
+                Meni eslab qol
               </label>
               <a
-                className="text-[14px] text-[#2563EB] font-normal hover:underline"
                 href="#"
+                className="text-sm font-medium text-blue-600 hover:underline"
               >
                 Parolni unutdingizmi?
               </a>
-            </label>
+            </div>
 
             <Button
               type="submit"
               variant="primary"
               fullWidth
+              loading={isPending}
               rightIcon={<Icon.arrowRight />}
               className="mt-1 cursor-pointer"
             >
-              Ro'yxatdan o'tish
+              Kirish
             </Button>
           </form>
 
@@ -191,7 +205,7 @@ const LoginPage = () => {
           </div>
 
           <p className="mt-6 text-center text-sm text-slate-500">
-            Hisobingiz bormi?{" "}
+            Hisobingiz yo'qmi?{" "}
             <Link
               to="/register"
               className="font-semibold text-blue-600 hover:underline"
@@ -205,4 +219,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

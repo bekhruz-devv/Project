@@ -1,7 +1,5 @@
-import useUserStore from "../store/user.store";
-
 const Register = () => {
-  const store = useUserStore();
+  console.log("Register component rendered");
   return <div></div>;
 };
 export default Register;

@@ -5,7 +5,11 @@ const Login = () => {
   const store = useUserStore();
   useEffect(() => {
     setTimeout(() => {
-      store.setUser({ name: "Jasurbek", email: "jasurbek@gmail.com" });
+      store.setUser({
+        firstName: "Jasurbek",
+        lastName: "Test",
+        email: "jasurbek@gmail.com",
+      });
     }, 8000);
   }, []);
   console.log("Login render");
