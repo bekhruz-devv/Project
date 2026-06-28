@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Icon } from "../ui/Icon";
 import SectionHeading from "../ui/SectionHeading";
 import { courses } from "../../data/home.data";
@@ -60,9 +61,12 @@ const Courses = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <button className="inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50">
-            Barcha kurslarni ko'rish <Icon.arrowRight />
-          </button>
+          <Link
+            to="/courses"
+            className="inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Barcha kurslarni ko'rish → <Icon.arrowRight />
+          </Link>
         </div>
       </div>
     </section>

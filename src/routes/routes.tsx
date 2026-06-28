@@ -9,6 +9,10 @@ import Teachers from "../pages/Teachers";
 import Home from "../pages/Home";
 import ProtectedRoute from "./protected.route";
 import AuthLayout from "../components/layouts/AuthLayout";
+import Faq from "../pages/Faq";
+import Courses from "../pages/Courses";
+import Pricing from "../pages/Pricing";
+import CourseDetail from "../pages/CourseDetail";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +32,22 @@ const routes = createBrowserRouter([
           {
             path: "/contact",
             element: <Contact />,
+          },
+          {
+            path: "/faq",
+            element: <Faq />,
+          },
+          {
+            path: "/courses",
+            element: <Courses />,
+          },
+          {
+            path: "/pricing",
+            element: <Pricing />,
+          },
+          {
+            path: "/courses/:id",
+            element: <CourseDetail />,
           },
         ],
       },

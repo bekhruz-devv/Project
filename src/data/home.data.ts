@@ -10,9 +10,11 @@ import type {
 
 export const navLinks: NavLink[] = [
   { label: "Bosh sahifa", path: "/" },
-  { label: "Kurslar", path: "#" },
+  { label: "Kurslar", path: "/courses" },
   { label: "O'qituvchilar", path: "/teachers" },
+  { label: "Narxlar", path: "/pricing" },
   { label: "Blog", path: "#" },
+  { label: "FAQ", path: "/faq" },
   { label: "Aloqa", path: "/contact" },
 ];
 
